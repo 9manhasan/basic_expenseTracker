@@ -18,12 +18,62 @@ public class expTracker {
         Budget = sc.nextInt();
     }
 
-
     //getRemainingBudget will show the remaining budget.
     public static int getRemainingBudget(){
         return Budget - TotalExpense;
     }
 
+    /*Task Menu
+    * 1.Add Expense: use to add Expense.
+    * 2.Delete Expense: use to delete Expense.
+    * 3.View : Lets you see a log of Expense.
+    * 4.Menu : will return to previous menu.
+    * 5.Close : will close the program.*/
+    static void ExpenseMenu()
+    {
+        int op = 0;
+        do
+        {
+            try
+            {
+                System.out.println("Type the following number to use that : ");
+                //to add an expense.
+                System.out.println("1. Add Expense. ");
+                //to delete am expense.
+                System.out.println("2. Delete Expense ");
+                //to let you see log's of.
+                System.out.println("3. View ");
+                //to exit to the menu.
+                System.out.println("4. Menu ");
+
+                System.out.println("5. Exit ");
+                System.out.println("Enter the option here : ");
+                op = sc.nextInt();
+                switch (op)
+                {
+                    case 1:
+                        System.out.println("under construction.");
+                        break;
+                    case 2:
+                        System.out.println("under construction.");
+                        break;
+                    case 3:
+                        System.out.println("under construction.");
+                        break;
+                    case 4:
+                        Menufunc();
+                        break;
+                    case 5:
+                        System.out.println("Exiting bye....");
+                        System.exit(0);
+                }
+            }catch (InputMismatchException e)
+            {
+                System.out.println("Invalid data type.");
+                sc.next();
+            }
+        }while(op != 5);
+    }
 
     /*Menu which will show these four options :
     * 1.Budget.
@@ -39,13 +89,13 @@ public class expTracker {
             {
                 System.out.println("Type the following number to use that : ");
                 //to show the budget.
-                System.out.println("1. Budget ");
+                System.out.println("1. Budget. ");
                 //to get remaining expense.
-                System.out.println("2. Remaining Budget ");
+                System.out.println("2. Remaining Budget. ");
                 //to use task's menu.
-                System.out.println("3. Task Menu ");
+                System.out.println("3. Expense Section. ");
                 //to exit the menu and close the program.
-                System.out.println("4. Exit ");
+                System.out.println("4. Exit. ");
                 System.out.println("Enter the option here : ");
                 op = sc.nextInt();
                 switch(op)
@@ -57,7 +107,7 @@ public class expTracker {
                         System.out.println(getRemainingBudget());
                         break;
                     case 3 :
-                        System.out.println("under construction.");
+                        ExpenseMenu();
                         break;
                     case 4 :
                         System.out.println("Exiting...bye");
@@ -94,7 +144,6 @@ public class expTracker {
                 sc.next();
             }
         }
-
         Menufunc();
     }
 
