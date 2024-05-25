@@ -10,6 +10,14 @@ public class expTracker {
     //Remaining budget which will get (Budget-TotalExpense);
     public static int RemainingBudget = 0;
 
+    //max number of expense can be created.
+    public static  int MAX_VALUE = 100;
+    //expenseName will be used for storing the name of the expense.
+    public static String[] expenseName = new String[MAX_VALUE];
+    //expenseBudget will be used for storing the budget of the expense.
+    public static int[] expenseBudget = new int[MAX_VALUE];
+    //num will be the number or position where the designated budget and name will be stored.
+    public static int numOfExpense = 0;
 
     //GetBudget will store budget.
     public static void getBudgetFunc()
@@ -20,7 +28,7 @@ public class expTracker {
 
     //getRemainingBudget will show the remaining budget.
     public static int getRemainingBudget(){
-        return Budget - TotalExpense;
+        return  Budget - TotalExpense;
     }
 
     /*Task Menu
@@ -45,20 +53,20 @@ public class expTracker {
                 System.out.println("3. View ");
                 //to exit to the menu.
                 System.out.println("4. Menu ");
-
+                //to exit out of the program.
                 System.out.println("5. Exit ");
                 System.out.println("Enter the option here : ");
                 op = sc.nextInt();
                 switch (op)
                 {
                     case 1:
-                        System.out.println("under construction.");
+                        AddExpense();
                         break;
                     case 2:
                         System.out.println("under construction.");
                         break;
                     case 3:
-                        System.out.println("under construction.");
+                        viewExpenseList();
                         break;
                     case 4:
                         Menufunc();
@@ -75,6 +83,64 @@ public class expTracker {
         }while(op != 5);
     }
 
+    //add func will be called to let user add or track expense
+    static void AddExpense()
+    {
+        if(numOfExpense >= MAX_VALUE) {
+            System.out.println("Max value reached.");
+            return;
+        }
+        int remainingBudget = getRemainingBudget();
+        if(remainingBudget <= 0)
+        {
+            System.out.println("No more expense is allowed as it has reached its maximum.");
+            return;
+        }
+        sc.nextLine();
+            try
+        {
+            //taking name and input.
+            System.out.println("Enter the Expense name here : ");
+            String name = sc.nextLine();
+            //if name is empty then it will return.
+            if(name.isEmpty())
+            {
+                System.out.println("Name cannot be empty.");
+                return;
+            }
+            //if not empty it will store.
+            expenseName[numOfExpense]= name;
+
+            System.out.println("Enter the Expense Budget here : ");
+            int expense = sc.nextInt();
+            //if it's more than remaining then we will not register it.
+            if(expense  > remainingBudget)
+            {
+                System.out.println("Expense exceeds remaining budget. Cannot add this expense. ");
+            } else {
+                expenseBudget[numOfExpense] = expense;
+                System.out.println("Expense added successfully.");
+                TotalExpense += expense;
+                numOfExpense++;
+            }
+        }catch (InputMismatchException e)
+        {
+            System.out.println("Invalid data type.");
+            sc.next();
+        }
+    }
+
+
+    public static void viewExpenseList()
+    {
+        if(numOfExpense == 0) {
+            System.out.println("No Expense is added. ");
+            return;
+        }
+        for (int i = 0; i < numOfExpense; i++) {
+            System.out.println("Expense Name : " + expenseName[i] + " | Cost : " + expenseBudget[i] +"inr.");
+        }
+    }
     /*Menu which will show these four options :
     * 1.Budget.
     * 2.Remaining Budget.
@@ -104,7 +170,7 @@ public class expTracker {
                         System.out.println(Budget);
                         break;
                     case 2:
-                        System.out.println(getRemainingBudget());
+                        System.out.println(getRemainingBudget() + " inr is your remaining budget.");
                         break;
                     case 3 :
                         ExpenseMenu();
