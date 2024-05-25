@@ -130,7 +130,7 @@ public class expTracker {
         }
     }
 
-
+    //will show the list to user.
     public static void viewExpenseList()
     {
         if(numOfExpense == 0) {
