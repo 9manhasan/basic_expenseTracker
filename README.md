@@ -26,7 +26,7 @@ This Expense Tracker is a simple Java application to help you manage your expens
    - **Exit:** Close the application.
 3. In the Expense Section, you can:
    - **Add Expense:** Enter the name and budget of your expense. The expense will be added to your total expenses.
-   - **Delete Expense:** (Under construction) Delete an existing expense.
+   - **Delete Expense:** Delete an existing expense.
    - **View:** View a log of all your expenses.
    - **Menu:** Return to the main menu.
    - **Exit:** Close the application.
