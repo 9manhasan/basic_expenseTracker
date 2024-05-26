@@ -8,7 +8,7 @@ public class expTracker {
     //Total expense which will have sum of the budgets of all the expense's.
     public static int TotalExpense = 0;
     //Remaining budget which will get (Budget-TotalExpense);
-    public static int RemainingBudget = 0;
+//    public static int RemainingBudget = 0;
 
     //max number of expense can be created.
     public static  int MAX_VALUE = 100;
@@ -63,7 +63,7 @@ public class expTracker {
                         AddExpense();
                         break;
                     case 2:
-                        System.out.println("under construction.");
+                        deleteExpense();
                         break;
                     case 3:
                         viewExpenseList();
@@ -130,6 +130,43 @@ public class expTracker {
         }
     }
 
+    //delete expense will use to delete the expense given by the user only one at a time.
+    public static void deleteExpense()
+    {
+        if(numOfExpense == 0)
+        {
+            System.out.println("No expense to delete.");
+            return;
+        }
+        viewExpenseList();
+
+        int op;
+        try
+        {
+            System.out.println("Enter the number here : ");
+            op = sc.nextInt();
+            if(op < 0 || op >= numOfExpense)
+            {
+                System.out.println("Invalid expense number. Please try again.");
+                return;
+            }
+            //subtracting the budget of that particular expense.
+            TotalExpense -= expenseBudget[op];
+            for (int i = op; i < numOfExpense - 1; i++) {
+                expenseBudget[i] = expenseBudget[i + 1];
+                expenseName[i] = expenseName[i + 1];
+            }
+            expenseBudget[numOfExpense - 1] = 0;
+            expenseName[numOfExpense - 1] = null;
+            numOfExpense--;
+            System.out.println("Expense deleted.");
+        }catch (InputMismatchException e)
+        {
+            System.out.println("Invalid data type entered.");
+            sc.next();
+        }
+    }
+
     //will show the list to user.
     public static void viewExpenseList()
     {
@@ -137,10 +174,14 @@ public class expTracker {
             System.out.println("No Expense is added. ");
             return;
         }
+        System.out.println("--------------------------------------");
         for (int i = 0; i < numOfExpense; i++) {
-            System.out.println("Expense Name : " + expenseName[i] + " | Cost : " + expenseBudget[i] +"inr.");
+            System.out.println( i + "|Expense Name : " + expenseName[i] + " |Budget : " + expenseBudget[i] +" inr |");
         }
+        System.out.println("--------------------------------------");
     }
+
+
     /*Menu which will show these four options :
     * 1.Budget.
     * 2.Remaining Budget.
