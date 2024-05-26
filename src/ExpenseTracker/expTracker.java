@@ -145,14 +145,15 @@ public class expTracker {
         {
             System.out.println("Enter the number here : ");
             op = sc.nextInt();
-            if(op < 0 || op >= numOfExpense)
+            int index = op - 1;
+            if(index < 0 || index >= numOfExpense)
             {
                 System.out.println("Invalid expense number. Please try again.");
                 return;
             }
             //subtracting the budget of that particular expense.
-            TotalExpense -= expenseBudget[op];
-            for (int i = op; i < numOfExpense - 1; i++) {
+            TotalExpense -= expenseBudget[index];
+            for (int i = index; i < numOfExpense - 1; i++) {
                 expenseBudget[i] = expenseBudget[i + 1];
                 expenseName[i] = expenseName[i + 1];
             }
@@ -176,7 +177,7 @@ public class expTracker {
         }
         System.out.println("--------------------------------------");
         for (int i = 0; i < numOfExpense; i++) {
-            System.out.println( i + "|Expense Name : " + expenseName[i] + " |Budget : " + expenseBudget[i] +" inr |");
+            System.out.println( (i+1) + "|Expense Name : " + expenseName[i] + " |Budget : " + expenseBudget[i] +" inr |");
         }
         System.out.println("--------------------------------------");
     }
