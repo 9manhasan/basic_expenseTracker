@@ -219,7 +219,7 @@ public class expTracker {
                         break;
                     case 4 :
                         System.out.println("Exiting...bye");
-                        break;
+                        System.exit(0);
                     default:
                         System.out.println("Enter op from the menu only.");
                         break;
