@@ -1,7 +1,8 @@
 **Expense Tracker Documentation**
 
 Hey there! 👋 Welcome to the Expense Tracker documentation, where managing your expenses just got a whole lot easier and more fun! 📊💰
-
+## quick disclaimer
+This is currently a console based in-memory project as `error_handling.java` is not completed thx!.
 ### Introduction
 Expense Tracker is a Java-based application designed to help you keep track of your expenses in a simple and efficient way. Whether you're managing personal finances or tracking business expenses, this tool has got you covered!
 
