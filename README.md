@@ -30,7 +30,8 @@ This Expense Tracker is a simple Java application to help you manage your expens
    - **View:** View a log of all your expenses.
    - **Menu:** Return to the main menu.
    - **Exit:** Close the application.
-
+## Small Notice :
+- 27/05/2024 : this program is not completed as it is unable to save files.
 ## Support
 
 For any issues or questions, you can reach out to me on [Twitter](https://x.com/Naumanxaim0) or via email at iammdnaumanatharhasan@gmail.com.
